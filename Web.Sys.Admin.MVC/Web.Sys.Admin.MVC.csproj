@@ -23,4 +23,10 @@
     <ProjectReference Include="..\Web.Sys.Model\Web.Sys.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="app.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -11,6 +11,7 @@ using Web.Sys.Model;
 using Microsoft.AspNetCore.Authorization;
 using e3net.Common;
 using log4net;
+using Core.Common;
 
 namespace Web.Sys.Admin.MVC.Controllers
 {
@@ -20,6 +21,8 @@ namespace Web.Sys.Admin.MVC.Controllers
 
         public ActionResult Index()
         {
+           //string _connectionString = ConfigurationManager.GetJsonValue(string.Format("{0}:connectionString", "PostgreSql_DB"));
+           // string _providerName = ConfigurationManager.GetJsonValue(string.Format("{0}:providerName", "PostgreSql_DB"));
             return View();
         }
 

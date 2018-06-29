@@ -114,20 +114,14 @@ namespace Core.PetaPocoServer
             #endregion
 
             #region NetCore Json
-
-            if(string.IsNullOrEmpty(connectionStringName))
+            _providerName = "MySql.Data.MySqlClient";
+            if (string.IsNullOrEmpty(connectionStringName))
                 throw new InvalidOperationException("Can't find a connection string with the name '" + connectionStringName + "'");
-            switch (connectionStringName.ToLower())
-            {
-                case "postgresql_db":
-                    _connectionString = ConfigurationManager.GetJsonValue(string.Format("ConnectionStrings:{0}", connectionStringName));
-                    _providerName = "npgsql";
-                    break;
-                default:
-                    _providerName = "System.Data.SqlClient";
-                    break;
-            }
-            CommonConstruct();  
+
+            _connectionString = ConfigurationManager.GetJsonValue(string.Format("{0}:connectionString", connectionStringName));
+            _providerName = ConfigurationManager.GetJsonValue(string.Format("{0}:providerName", connectionStringName));
+
+            CommonConstruct();
             #endregion
         }
 
