@@ -21,8 +21,12 @@ namespace Web.Sys.Admin.MVC.Controllers
 
         public ActionResult Index()
         {
-           //string _connectionString = ConfigurationManager.GetJsonValue(string.Format("{0}:connectionString", "PostgreSql_DB"));
-           // string _providerName = ConfigurationManager.GetJsonValue(string.Format("{0}:providerName", "PostgreSql_DB"));
+            //string _connectionString = ConfigurationManager.GetJsonValue(string.Format("{0}:connectionString", "PostgreSql_DB"));
+            // string _providerName = ConfigurationManager.GetJsonValue(string.Format("{0}:providerName", "PostgreSql_DB"));
+            log.Error("Login error");
+            log.Debug("Debugsddsdsdr");
+            log.Warn("Login Warn");
+            log.Info("Login Info");
             return View();
         }
 
