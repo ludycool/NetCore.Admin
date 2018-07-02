@@ -9,6 +9,7 @@ using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
@@ -55,7 +56,7 @@ namespace Web.Sys.Admin.MVC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-          
+
 
             if (env.IsDevelopment())
             {
@@ -71,7 +72,18 @@ namespace Web.Sys.Admin.MVC
 
             //使用session
             app.UseSession();
+            #region 使用反向代理服务器
+            /*
+             使用 Microsoft.AspNetCore.HttpOverrides 包中的转接头中间件。 此中间件使用 X-Forwarded-Proto 标头来更新 Request.Scheme，使重定向 URI 和其他安全策略能够正常工作
+             */
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
 
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+            app.UseAuthentication();
+
+            #endregion
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
