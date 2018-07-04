@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Common\Core.Common.csproj" />
-    <ProjectReference Include="..\e3net.Common\e3net.Common.csproj" />
     <ProjectReference Include="..\Web.Sys.BLL\Web.Sys.BLL.csproj" />
     <ProjectReference Include="..\Web.Sys.Model\Web.Sys.Model.csproj" />
   </ItemGroup>
